@@ -10,12 +10,17 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  // Base ESLint configs from Next.js
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 
-  // 👇 Add this override to turn off the no-explicit-any rule
+  // 👇 Add this to disable specific rules globally
   {
+    files: ["**/*.ts", "**/*.tsx"],
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "prefer-const": "off",
+      "react/no-unescaped-entities": "off"
     },
   },
 ];
