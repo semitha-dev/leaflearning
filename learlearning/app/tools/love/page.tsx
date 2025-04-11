@@ -41,8 +41,8 @@ export default function LoveCalculator() {
 
       // Message based on score
       if (percentage > 80) setMessage("You two are a perfect match! ❤️");
-      else if (percentage > 50) setMessage("There’s definitely a spark! 🔥");
-      else if (percentage > 30) setMessage("There's potential... 🤔");
+      else if (percentage > 50) setMessage("definitely a spark! 🔥");
+      else if (percentage > 30) setMessage("Therewon&apos;ts potential... 🤔");
       else setMessage("Maybe just friends 😅");
     }
   }

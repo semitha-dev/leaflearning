@@ -13,7 +13,7 @@ export default function LoremIpsumGenerator() {
   const generateLorem = async () => {
     try {
       // Always fetch 5 paragraphs of lorem text
-      let url = "https://baconipsum.com/api/?type=meat-and-filler&paras=5";
+      const url = "https://baconipsum.com/api/?type=meat-and-filler&paras=5";
       const res = await axios.get(url);
       const combinedText = res.data.join(" ");
 

@@ -8,7 +8,7 @@ import { jsPDF } from "jspdf";
 export default function IPAddressFinder() {
   const [ipAddress, setIpAddress] = useState("");
   const [ipDetails, setIpDetails] = useState<any>(null);
-  const [frame, setFrame] = useState<boolean>(false);
+  const [frame, ] = useState<boolean>(false);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const reportRef = useRef<HTMLDivElement>(null);
 
