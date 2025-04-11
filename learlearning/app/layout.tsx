@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Leaf Learning Tools - All-in-One Utility Toolkit",
     description: "Access 15+ powerful tools like BMI calculator, QR generator, IP finder, and more from one simple dashboard.",
-    url: "https://yourdomain.com", // <-- replace with actual domain
+    url: "https://www.leaflearning.me/", // <-- replace with actual domain
     siteName: "Leaf Learning Tools",
     images: [
       {
