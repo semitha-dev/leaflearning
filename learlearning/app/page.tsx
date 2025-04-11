@@ -43,7 +43,7 @@ export default function Home() {
           <img
             src="/cover2.png"
             alt="Site Logo"
-            className="h-12 w-auto object-contain"
+            className="h-32 w-auto object-contain"
           />
         </Link>
       </div>
