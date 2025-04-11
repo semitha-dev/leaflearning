@@ -6,7 +6,6 @@ import Link from "next/link";
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  // 1. This is the list of all your tools in one place
   const tools = [
     { title: "BMI Calculator", href: "/tools/bmi" },
     { title: "Love Calculator", href: "/tools/love" },
@@ -26,21 +25,29 @@ export default function Home() {
     { title: "Lorem Ipsum Generator", href: "/tools/lorem-ipsum" },
     { title: "Epoch Time Converter", href: "/tools/epoch-converter" },
     { title: "Online Stopwatch", href: "/tools/stopwatch" },
-    
   ];
-  
-  // 2. Filter tools based on the search term (case-insensitive)
+
   const filteredTools = tools.filter(tool =>
     tool.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // 3. Update search input state
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
   return (
     <main className="min-h-screen bg-gray-100 text-gray-900 p-4">
+      {/* Logo top-left */}
+      <div className="flex items-center justify-start mb-4">
+        <Link href="/">
+          <img
+            src="/cover.png"
+            alt="Site Logo"
+            className="h-12 w-auto object-contain"
+          />
+        </Link>
+      </div>
+
       <header className="text-center py-10">
         <h1 className="text-4xl font-bold mb-2">Free Tools & Generators</h1>
         <p className="text-lg text-gray-600">
@@ -55,7 +62,6 @@ export default function Home() {
         />
       </header>
 
-      {/* 4. Show filtered cards */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {filteredTools.map((tool, index) => (
           <ToolCard key={index} title={tool.title} href={tool.href} />
