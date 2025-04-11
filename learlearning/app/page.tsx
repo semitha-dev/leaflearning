@@ -41,7 +41,7 @@ export default function Home() {
       <div className="flex items-center justify-start mb-4">
         <Link href="/">
           <img
-            src="/cover.png"
+            src="/cover2.png"
             alt="Site Logo"
             className="h-12 w-auto object-contain"
           />
