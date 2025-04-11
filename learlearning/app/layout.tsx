@@ -25,7 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google AdSense Script */}
+      <meta name="description" content="Convert epochs to human-readable date and more."/>
+      <meta name="description" content="Convert epochs to human-readable date and more."/>
+      <meta property="og:image" content="/logo.png" />
+
+
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3641349574273554"
