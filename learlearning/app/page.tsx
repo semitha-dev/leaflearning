@@ -20,14 +20,13 @@ export default function Home() {
     { title: "Word Counter", href: "/tools/word-counter" },
     { title: "Text Case Converter", href: "/tools/text-case-converter" },
     { title: "Markdown Previewer", href: "/tools/markdown-previewer" },
-    { title: "Currency Converter", href: "/tools/currency-converter" },
+    { title: "Todo List", href: "/tools/list" },
     { title: "IP Address Finder", href: "/tools/ip-finder" },
     { title: "JSON Formatter", href: "/tools/json-formatter" },
     { title: "Lorem Ipsum Generator", href: "/tools/lorem-ipsum" },
     { title: "Epoch Time Converter", href: "/tools/epoch-converter" },
     { title: "Online Stopwatch", href: "/tools/stopwatch" },
-    { title: "Random Number Generator", href: "/tools/random-number" },
-    { title: "Temperature Converter", href: "/tools/temp-converter" }
+    
   ];
   
   // 2. Filter tools based on the search term (case-insensitive)
