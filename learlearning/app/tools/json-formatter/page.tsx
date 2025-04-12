@@ -69,7 +69,7 @@ export default function JSONFormatter() {
           {error ? (
             <p className="text-red-600 font-mono">{error}</p>
           ) : (
-            <pre className="bg-gray-100 p-4 rounded-lg overflow-auto text-sm font-mono">
+            <pre className="bg-black p-4 rounded-lg overflow-auto text-sm font-mono">
               {JSON.stringify(parsedJson, null, 2)}
             </pre>
           )}
