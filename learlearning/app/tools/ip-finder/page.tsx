@@ -115,7 +115,6 @@ export default function IPAddressFinder() {
         <h1 className="text-4xl font-bold text-gray-800 mb-6">IP Address Finder</h1>
 
         <form
-          onSubmit={getIpDetails}
           className="bg-white p-6 rounded-2xl shadow-xl w-full"
         >
           <div className="mb-4">
@@ -135,9 +134,9 @@ export default function IPAddressFinder() {
 
           <button
             type="submit"
-            className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition w-full"
+            className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition w-full"
           >
-            Find IP Details
+            Currently Disabled
           </button>
         </form>
 
