@@ -30,7 +30,7 @@ export default function IPAddressFinder() {
   async function getIpDetails(e: React.FormEvent) {
     e.preventDefault();
     try {
-      const res = await axios.get(`http://ip-api.com/json/${ipAddress}`);
+      const res = await axios.get(`https://ip-api.com/json/${ipAddress}`);
       setIpDetails(res.data);
     } catch (err) {
       console.error("Error fetching IP details", err);
