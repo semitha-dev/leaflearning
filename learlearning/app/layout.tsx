@@ -43,9 +43,10 @@ export const metadata: Metadata = {
     description: "Access 15+ powerful tools like BMI calculator, QR generator, IP finder, and more from one simple dashboard.",
     url: "https://www.leaflearning.me/", // <-- replace with actual domain
     siteName: "Leaf Learning Tools",
+    
     images: [
       {
-        url: "/logo.jpg",
+        url: "favicon.ico",
         width: 800,
         height: 600,
         alt: "Leaf Learning Logo",
@@ -74,7 +75,10 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="keywords" content={toolKeywords} />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+        <link rel="manifest" href="/site.webmanifest"></link>
         
         <script
           async
