@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     siteName: "Leaf Learning Tools",
     images: [
       {
-        url: "/logo.png",
+        url: "/logo.jpg",
         width: 800,
         height: 600,
         alt: "Leaf Learning Logo",
