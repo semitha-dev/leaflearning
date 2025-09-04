@@ -1,5 +1,8 @@
 'use client';
 
+
+export const dynamic = "force-dynamic";
+
 import React, { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
@@ -14,8 +17,8 @@ export default function AdminLoginPage() {
   const sp = useSearchParams();
   const redirectTo = sp.get('redirect') || '/admin';
 
-  const [email, setEmail] = useState('semithaadmin@gmail.com');
-  const [password, setPassword] = useState(''); // enter: krakenhost211K
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState(''); 
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
