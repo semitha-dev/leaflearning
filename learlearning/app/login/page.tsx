@@ -1,31 +1,37 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { supabase } from '@/app/lib/supabaseClient';
-import NavBar from '../components/Navbar';
-import { Mail, Lock, Loader2, LogIn, ArrowRight } from 'lucide-react';
+import React, { Suspense, useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
+import { supabase } from "@/app/lib/supabaseClient";
+import NavBar from "../components/Navbar";
+import { Mail, Lock, Loader2, LogIn, ArrowRight } from "lucide-react";
 
-export default function LoginPage() {
+/** Inner component so we can safely use useSearchParams() inside Suspense */
+function LoginInner() {
   const router = useRouter();
   const sp = useSearchParams();
-  const redirectTo = sp.get('redirect') || '/';
+  const redirectTo = sp.get("redirect") || "/";
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
-  // If already signed in, don't show login—go where the app expects
+  // If already signed in, redirect away from login
   useEffect(() => {
     let mounted = true;
     (async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
       if (mounted && session) router.replace(redirectTo);
     })();
-    return () => { mounted = false; };
+    return () => {
+      mounted = false;
+    };
   }, [router, redirectTo]);
 
   async function signInWithPassword(e: React.FormEvent) {
@@ -42,26 +48,25 @@ export default function LoginPage() {
     setLoading(true);
     setToast(null);
     const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
+      provider: "google",
       options: {
-        // Send Google → Supabase → back to this URL
-        redirectTo: `${location.origin}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`
-      }
+        redirectTo: `${location.origin}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`,
+      },
     });
     setLoading(false);
     if (error) setToast(error.message);
-    // No router.push here: OAuth redirects the page.
+    // No router.push here; OAuth flow handles navigation.
   }
 
   async function sendReset() {
-    if (!email) return setToast('Enter your email first.');
+    if (!email) return setToast("Enter your email first.");
     setLoading(true);
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${location.origin}/reset-password`,
     });
     setLoading(false);
     if (error) return setToast(error.message);
-    setToast('Check your inbox for a password reset link.');
+    setToast("Check your inbox for a password reset link.");
   }
 
   return (
@@ -131,13 +136,16 @@ export default function LoginPage() {
             disabled={loading}
             className="w-full inline-flex items-center justify-center gap-2 bg-white/80 ring-1 ring-amber-200 hover:bg-amber-50 text-stone-800 px-4 h-11 rounded-lg"
           >
-            <img src="/google.svg" alt="" className="h-4 w-4" />
+            <Image src="/google.svg" alt="Google" width={16} height={16} />
             Continue with Google
           </button>
 
           <p className="mt-4 text-sm text-stone-700">
-            New here?{' '}
-            <Link href={`/signup?redirect=${encodeURIComponent(redirectTo)}`} className="text-amber-700 hover:text-amber-800 inline-flex items-center gap-1">
+            New here?{" "}
+            <Link
+              href={`/signup?redirect=${encodeURIComponent(redirectTo)}`}
+              className="text-amber-700 hover:text-amber-800 inline-flex items-center gap-1"
+            >
               Create an account <ArrowRight className="h-4 w-4" />
             </Link>
           </p>
@@ -152,3 +160,20 @@ export default function LoginPage() {
     </main>
   );
 }
+
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <p className="grid place-items-center min-h-screen text-stone-500">
+          Loading…
+        </p>
+      }
+    >
+      <LoginInner />
+    </Suspense>
+  );
+}
+
+// Prevents static prerender so Suspense + useSearchParams works in prod
+export const dynamic = "force-dynamic";
