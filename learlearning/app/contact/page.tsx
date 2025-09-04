@@ -170,7 +170,7 @@ export default function Contact() {
                 value={name}
                 onChange={setName}
                 icon={<User className="h-4 w-4 text-stone-500" />}
-                placeholder="e.g., Semitha"
+                placeholder="e.g., Peter Parker"
               />
               <Field
                 label="Subject"
