@@ -19,7 +19,6 @@ export default function About() {
     <main className="min-h-screen text-stone-800 bg-[radial-gradient(1200px_600px_at_-10%_-10%,#fde7d9_0%,transparent_60%),radial-gradient(800px_500px_at_110%_-10%,#ffe7ba_0%,transparent_55%),linear-gradient(to_bottom,#fff8f1,#fff5e7)]">
       {/* Nav */}
 
-     <NavBar/>
 
       {/* Hero */}
       <section className="relative overflow-hidden">

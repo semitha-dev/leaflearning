@@ -83,7 +83,8 @@ export default function NavBar() {
   }
 
   return (
-    <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-amber-50/80 bg-amber-50/90 border-b border-amber-200/80">
+    // ⬇️ Changed from `sticky top-0` to plain `relative` so it scrolls away
+    <header className="relative z-40 backdrop-blur supports-[backdrop-filter]:bg-amber-50/80 bg-amber-50/90 border-b border-amber-200/80">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <img
@@ -98,13 +99,12 @@ export default function NavBar() {
 
         {/* Left nav (pills) */}
         <nav className="hidden md:flex items-center gap-6 text-sm">
-          <NavLink href="/"        label="Home"    current={pathname === '/'} />
-          <NavLink href="/about"   label="About"   current={pathname === '/about'} />
-          <NavLink href="/contact" label="Contact" current={pathname === '/contact'} />
-          <NavLink href="/donation" label="Donations" current={pathname === '/donation'} />
-          <NavLink href="/vote"    label="Vote"    current={pathname === '/vote'} />
-          <NavLink href="/announcements"    label="Announcements"    current={pathname === '/announcements'} />
-
+          <NavLink href="/"        label="Home"          current={pathname === '/'} />
+          <NavLink href="/about"   label="About"         current={pathname === '/about'} />
+          <NavLink href="/contact" label="Contact"       current={pathname === '/contact'} />
+          <NavLink href="/donation" label="Donations"    current={pathname === '/donation'} />
+          <NavLink href="/vote"    label="Vote"          current={pathname === '/vote'} />
+          <NavLink href="/announcements" label="Announcements" current={pathname === '/announcements'} />
         </nav>
 
         {/* Right side: auth */}

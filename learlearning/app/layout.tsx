@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 import DonationNotice from "./components/DonationNotice";
+import NavBar from "./components/Navbar";
+import Update from "./components/Update";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -44,7 +47,6 @@ export const metadata: Metadata = {
     description: "Access 15+ powerful tools like BMI calculator, QR generator, IP finder, and more from one simple dashboard.",
     url: "https://www.leaflearning.me/", // <-- replace with actual domain
     siteName: "Leaf Learning Tools",
-    
     images: [
       {
         url: "favicon.ico",
@@ -88,9 +90,17 @@ export default function RootLayout({
         ></script>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <DonationNotice /> 
+        
+        {/* Wrap Nav + Banner in SAME gradient as pages */}
+        <div className="bg-[radial-gradient(1200px_600px_at_-10%_-10%,#fde7d9_0%,transparent_60%),radial-gradient(800px_500px_at_110%_-10%,#ffe7ba_0%,transparent_55%),linear-gradient(to_bottom,#fff8f1,#fff5e7)]">
+          <NavBar />
+          <DonationNotice />
+          <Update version='1.1.0'/>
+          
+        </div>
+
         {children}
-        <Analytics /> {/* <--- Add this here */}
+        <Analytics /> {/* <--- Vercel analytics */}
       </body>
     </html>
   );
