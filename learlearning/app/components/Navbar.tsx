@@ -101,6 +101,7 @@ export default function NavBar() {
           <NavLink href="/"        label="Home"    current={pathname === '/'} />
           <NavLink href="/about"   label="About"   current={pathname === '/about'} />
           <NavLink href="/contact" label="Contact" current={pathname === '/contact'} />
+          <NavLink href="/donation" label="Donations" current={pathname === '/donation'} />
           <NavLink href="/vote"    label="Vote"    current={pathname === '/vote'} />
           <NavLink href="/announcements"    label="Announcements"    current={pathname === '/announcements'} />
 
