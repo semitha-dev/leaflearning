@@ -106,27 +106,7 @@ export default function LoremIpsumGenerator() {
       </div>
 
       {/* News Section */}
-      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-6">
-        <h2 className="text-2xl font-bold mb-4 text-blue-800">📰 Latest News</h2>
-        {news.length === 0 ? (
-          <p className="text-gray-600">Loading news...</p>
-        ) : (
-          <ul className="space-y-3">
-            {news.map((article: any, idx) => (
-              <li key={idx} className="border-b pb-2">
-                <a
-                  href={article.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-md font-medium text-black hover:text-blue-600 transition"
-                >
-                  • {article.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+     
     </div>
   );
 }
