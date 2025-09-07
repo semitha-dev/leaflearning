@@ -34,7 +34,6 @@ function NavLink({
 
 type Me = { id: string; name: string } | null
 
-// Map your folders to nice labels
 const TOOLS: Array<{ slug: string; label: string }> = [
   { slug: 'age',                label: 'Age Calculator' },
   { slug: 'bmi',                label: 'BMI Calculator' },
@@ -108,7 +107,6 @@ export default function NavBar() {
   const onTools = pathname.startsWith('/tools')
 
   return (
-    // scrolls away with the page (no sticky/fixed)
     <header className="relative z-40 backdrop-blur supports-[backdrop-filter]:bg-amber-50/80 bg-amber-50/90 border-b border-amber-200/80">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
@@ -128,26 +126,31 @@ export default function NavBar() {
           <NavLink href="/about"   label="About"         current={pathname === '/about'} />
           <NavLink href="/contact" label="Contact"       current={pathname === '/contact'} />
 
-          {/* Tools dropdown */}
-          <div className="relative group">
+          {/* Tools dropdown – FIXED: no hover gap; removed 'View all tools' */}
+          <div className="relative group pt-2">
             <button
               className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full ${
                 onTools ? 'bg-amber-600 text-white' : 'text-stone-700 hover:text-stone-900'
               }`}
               aria-haspopup="menu"
-              aria-expanded="false"
+              // With pure CSS hover we can't toggle this value reliably, so we leave it off.
             >
               Tools
               <ChevronDown className="h-4 w-4 opacity-80" />
             </button>
 
-            {/* Dropdown panel */}
             <div
-              className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition
-                         absolute left-1/2 -translate-x-1/2 mt-2 z-50
-                         w-[640px] max-w-[90vw] rounded-2xl border border-amber-200
-                         bg-white/95 backdrop-blur shadow-lg p-4"
+              className="
+                invisible opacity-0
+                group-hover:visible group-hover:opacity-100
+                group-focus-within:visible group-focus-within:opacity-100
+                transition
+                absolute left-1/2 -translate-x-1/2 top-full z-50
+                w-[640px] max-w-[90vw] rounded-2xl border border-amber-200
+                bg-white/95 backdrop-blur shadow-lg p-4
+              "
               role="menu"
+              tabIndex={-1}
             >
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                 {TOOLS.map(t => {
@@ -169,16 +172,7 @@ export default function NavBar() {
                   )
                 })}
               </div>
-
-              {/* Quick link to /tools root, if you have an index page */}
-              <div className="mt-3 text-right">
-                <Link
-                  href="/tools"
-                  className="text-xs text-amber-700 hover:text-amber-800 underline"
-                >
-                  View all tools →
-                </Link>
-              </div>
+              {/* Removed the 'View all tools →' quick link per your request */}
             </div>
           </div>
 
