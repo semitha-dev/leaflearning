@@ -129,7 +129,7 @@ export default function NavBar() {
           {/* Tools dropdown – FIXED: no hover gap; removed 'View all tools' */}
           <div className="relative group pt-2">
             <button
-              className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full ${
+              className={`inline-flex items-center gap-1 px-3 py-1.5 mb-2 rounded-full ${
                 onTools ? 'bg-amber-600 text-white' : 'text-stone-700 hover:text-stone-900'
               }`}
               aria-haspopup="menu"
