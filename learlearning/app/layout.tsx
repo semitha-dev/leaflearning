@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import DonationNotice from "./components/DonationNotice";
 import NavBar from "./components/Navbar";
 import Update from "./components/Update";
+import PromoPopup from "./components/PromoPopup";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -96,6 +97,7 @@ export default function RootLayout({
           <NavBar />
           <DonationNotice />
           <Update version='1.1.0'/>
+          <PromoPopup version='1.0.0'/>
           
         </div>
 
